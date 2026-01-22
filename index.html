@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Foodie House | Best Fast Food in Sangamvadi, Pune</title>
+    <meta name="description" content="Cafe Foodie House - Fresh, tasty, pocket-friendly fast food near AISSMS Campus, Sangamvadi, Pune. Momos, Burgers, Pizza & more.">
+    
+    <!-- External Resources -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #E63946;
+            --primary-dark: #C1121F;
+            --secondary: #FFB703;
+            --accent: #FB8500;
+            --dark: #1A1A1A;
+            --light: #FDFCF0;
+            --white: #FFFFFF;
+            --gray: #666666;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 1.5rem 100px;
+            background: radial-gradient(circle at top right, #fff5f5, transparent),
+                        radial-gradient(circle at bottom left, #fff9e6, transparent);
+            text-align: center;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 8vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(230, 57, 70, 0.3);
+        }
+
+        .btn-outline {
+            background: white;
+            color: var(--dark);
+            border: 2px solid #eee;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Stats/Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: -50px auto 80px;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: #fff5f5;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            border-radius: 20px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Menu Section */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 0 1.5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            border: 1px solid #eee;
+            background: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .menu-card:hover {
+            box-shadow: var(--shadow);
+            transform: scale(1.02);
+        }
+
+        .menu-card-header {
+            padding: 1.5rem;
+            background: #fafafa;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-card-header h3 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+        }
+
+        .menu-body {
+            padding: 1rem 1.5rem;
+        }
+
+        .food-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .food-item:last-child {
+            border-bottom: none;
+        }
+
+        .food-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border: 1px solid #ccc;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+        }
+        .dot::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+        .dot.veg::after { background: #2d6a4f; }
+        .dot.nonveg::after { background: #c1121f; }
+
+        .price {
+            font-weight: 800;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        /* Reviews */
+        .reviews {
+            background: #fff;
+            padding: 100px 0;
+        }
+
+        .review-slider {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 20px 1.5rem;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+
+        .review-card {
+            min-width: 300px;
+            background: var(--light);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            scroll-snap-align: center;
+            text-align: center;
+        }
+
+        .stars {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Location Section */
+        .location {
+            padding: 100px 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .map-container {
+            height: 450px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 8px solid white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 1.5rem 30px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .footer-col p, .footer-col a {
+            color: #aaa;
+            text-decoration: none;
+            line-height: 1.8;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        /* WhatsApp Float */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .wa-float:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        /* Mobile Specifics */
+        @media (max-width: 992px) {
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            animation: fadeIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-burger"></i> Cafe Foodie House
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#location">Visit</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="reveal">Fresh Bites for <span>Hungry Souls.</span></h1>
+            <p class="reveal">The ultimate pocket-friendly hangout spot in Sangamvadi. Real taste, real ingredients, really affordable.</p>
+            <div class="cta-group reveal" style="animation-delay: 0.2s;">
+                <a href="tel:0000000000" class="btn btn-primary">
+                    <i class="fas fa-phone"></i> Call to Order
+                </a>
+                <a href="#menu" class="btn btn-outline">Explore Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="features">
+        <div class="feature-card reveal">
+            <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+            <h3>Quick Service</h3>
+            <p>Hot and fresh food served in minutes, perfect for your break.</p>
+        </div>
+        <div class="feature-card reveal" style="animation-delay: 0.1s;">
+            <div class="feature-icon"><i class="fas fa-wallet"></i></div>
+            <h3>Student Friendly</h3>
+            <p>Quality taste that doesn't burn a hole in your pocket.</p>
+        </div>
+        <div class="feature-card reveal" style="animation-delay: 0.2s;">
+            <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+            <h3>Hygienic Prep</h3>
+            <p>Clean environment and fresh ingredients in every dish.</p>
+        </div>
+    </div>
+
+    <section id="menu" style="padding: 100px 0;">
+        <div class="section-header">
+            <h2>Crafted with Love</h2>
+            <p>Select a category to view our mouth-watering offerings</p>
+        </div>
+
+        <div class="menu-filter">
+            <button class="filter-btn active" onclick="filterMenu('all')">All</button>
+            <button class="filter-btn" onclick="filterMenu('momos')">Momos</button>
+            <button class="filter-btn" onclick="filterMenu('burgers')">Burgers</button>
+            <button class="filter-btn" onclick="filterMenu('pizza')">Pizza</button>
+            <button class="filter-btn" onclick="filterMenu('chinese')">Chinese</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+            <!-- Momos -->
+            <div class="menu-card" data-category="momos">
+                <div class="menu-card-header">
+                    <h3>🥟 Momos</h3>
+                    <span class="badge">Bestseller</span>
+                </div>
+                <div class="menu-body">
+                    <div class="food-item">
+                        <div class="food-info"><h4><span class="dot veg"></span> Veg Steamed</h4></div>
+                        <div class="price">₹80</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-info"><h4><span class="dot veg"></span> Paneer Steamed</h4></div>
+                        <div class="price">₹100</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-info"><h4><span class="dot nonveg"></span> Chicken Steamed</h4></div>
+                        <div class="price">₹110</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Burgers -->
+            <div class="menu-card" data-category="burgers">
+                <div class="menu-card-header">
+                    <h3>🍔 Burgers</h3>
+                </div>
+                <div class="menu-body">
+                    <div class="food-item">
+                        <div class="food-info"><h4><span class="dot veg"></span> Aloo Tikki Burger</h4></div>
+                        <div class="price">₹70</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-info"><h4><span class="dot veg"></span> Maharaja Veg Burger</h4></div>
+                        <div class="price">₹95</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-info"><h4><span class="dot nonveg"></span> Crispy Chicken Burger</h4></div>
+                        <div class="price">₹120</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pizza -->
+            <div class="menu-card" data-category="pizza">
+                <div class="menu-card-header">
+                    <h3>🍕 Pizza (6")</h3>
+                </div>
+                <div class="menu-body">
+                    <div class="food-item">
+                        <div class="food-info"><h4><span class="dot veg"></span> Margherita</h4></div>
+                        <div class="price">₹120</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-info"><h4><span class="dot veg"></span> Farmhouse Special</h4></div>
+                        <div class="price">₹150</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-info"><h4><span class="dot nonveg"></span> Chicken Peri Peri</h4></div>
+                        <div class="price">₹180</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chinese -->
+            <div class="menu-card" data-category="chinese">
+                <div class="menu-card-header">
+                    <h3>🍜 Chinese Specials</h3>
+                </div>
+                <div class="menu-body">
+                    <div class="food-item">
+                        <div class="food-info"><h4><span class="dot veg"></span> Hakka Noodles</h4></div>
+                        <div class="price">₹90</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-info"><h4><span class="dot veg"></span> Schezwan Fried Rice</h4></div>
+                        <div class="price">₹110</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-info"><h4><span class="dot veg"></span> Paneer Chilli</h4></div>
+                        <div class="price">₹140</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <div class="section-header">
+            <h2>Happy Foodies</h2>
+            <p>Don't take our word for it, ask our regulars!</p>
+        </div>
+        <div class="review-slider">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"The Chicken Burger here 
